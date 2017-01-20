@@ -1,10 +1,11 @@
 #Custom Input Module
 #Written by Craigory Coppola
-#Last updated on September 8,2016
+#Last updated on November 3,2016
 import sys
-DEFAULT_NUM = "Please enter a number:"
+DEFAULT_NUM = "Please enter a number: "
+DEFAULT_LIST_INT = "Please enter a list of integers seperated by commas: "
 def getInt(min_value = 0, max_value = False, prompt = DEFAULT_NUM): #min_value defaults to 0, max is not required
-	while True: #continue asking until and integer is given
+	while True: #continue asking until an integer is given
 		try:
 			x = int(input(prompt + ' '))
 			if(max_value != False):
@@ -19,7 +20,13 @@ def getInt(min_value = 0, max_value = False, prompt = DEFAULT_NUM): #min_value d
 			else:
 				print("Please give an integer greater than %d!" %(min_value))
 	return x
-
+def getListNum(prompt = DEFAULT_LIST_INT):
+	string_x = input(prompt)
+	list_string = string_x.split(",")
+	ListInt = []
+	for t in range(len(list_string)):
+		ListInt.append(int(list_string[t]))
+	return ListInt
 def getFloat(min_value = 0, max_value = False, prompt = DEFAULT_NUM):
 	while True: #continue asking until a valid value is given
 		try:
@@ -42,3 +49,9 @@ def getString(prompt="Input a string:"):
 		sys.exit()
 	else:
 		return x
+def getChar(prompt="Input a string:"):
+	x = input(prompt + " ")
+	if x == "exit":
+		sys.exit()
+	else:
+		return x[0]
